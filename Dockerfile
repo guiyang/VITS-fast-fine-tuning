@@ -26,8 +26,7 @@ RUN echo "source activate env" > ~/.bashrc
 ENV PATH /opt/conda/envs/env/bin:$PATH
 
 # RUN conda clean -y --index-cache
-RUN conda install -y pytorch torchvision torchaudio -c pytorch
-RUN conda install -y pytorch-cuda=11.8 -c nvidia
+RUN conda install pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
 RUN conda install -y numpy=1.21.6 scipy=1.5.2 tensorboard -c conda-forge
 
 # Set working directory
