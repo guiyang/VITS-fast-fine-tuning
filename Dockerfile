@@ -25,6 +25,9 @@ RUN conda create -n py38 python=3.8
 RUN echo "source activate env" > ~/.bashrc
 ENV PATH /opt/conda/envs/env/bin:$PATH
 
+# Check Python version
+RUN python --version
+
 # RUN conda clean -y --index-cache
 RUN conda install -y pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia
 RUN conda install -y numpy=1.21.6 scipy=1.5.2 tensorboard -c conda-forge
