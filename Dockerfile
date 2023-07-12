@@ -24,11 +24,11 @@ RUN python3 -m pip install --upgrade pip && \
 ENV PATH="/opt/conda/bin:${PATH}"
 
 # Create Python 3.8 environment
-RUN conda create -n py38 python=3.8
+#RUN conda create -n py38 python=3.8
 
 # Activate Python 3.8 environment in subsequent RUN commands
-RUN echo "source activate env" > ~/.bashrc
-ENV PATH /opt/conda/envs/env/bin:$PATH
+#RUN echo "source activate env" > ~/.bashrc
+#ENV PATH /opt/conda/envs/env/bin:$PATH
 
 # Check Python version
 RUN python --version
