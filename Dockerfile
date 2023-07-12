@@ -18,6 +18,7 @@ RUN apt-get update && apt-get install -y \
     apt-get update && apt-get install -y \
     python3.8 \
     python3.8-dev \
+    python3.8-distutils \
     python3-pip && \
     update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1 && \
     apt-get clean && \
