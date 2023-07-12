@@ -21,8 +21,9 @@ RUN apt-get update && apt-get install -y \
     python3.8-distutils \
     python3-pip && \
     update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1 && \
+    ln -s /usr/bin/python3 /usr/bin/python && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/* 
+    rm -rf /var/lib/apt/lists/*
     # python3 -m pip install --upgrade pip && \
     # pip config set global.timeout 120 && \
     # pip config set global.retries 28 && \
