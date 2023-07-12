@@ -29,8 +29,8 @@ RUN apt-get update && apt-get install -y \
     pip config set global.retries 28 && \
     pip config set global.cache-dir /tmp/pip-cache && \
     wget https://repo.anaconda.com/miniconda/Miniconda3-py38_23.5.0-3-Linux-x86_64.sh && \
-    bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/conda && \
-    rm Miniconda3-latest-Linux-x86_64.sh
+    bash Miniconda3-py38_23.5.0-3-Linux-x86_64.sh -b -p /opt/conda && \
+    rm Miniconda3-py38_23.5.0-3-Linux-x86_64.sh
 
 # # Check Python version
 RUN python --version
