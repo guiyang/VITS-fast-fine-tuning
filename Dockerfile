@@ -22,14 +22,14 @@ RUN apt-get update && apt-get install -y \
     python3-pip && \
     update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1 && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
-    python3 -m pip install --upgrade pip && \
-    pip config set global.timeout 120 && \
-    pip config set global.retries 28 && \
-    pip config set global.cache-dir /tmp/pip-cache && \
-    wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
-    bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/conda && \
-    rm Miniconda3-latest-Linux-x86_64.sh
+    rm -rf /var/lib/apt/lists/* 
+    # python3 -m pip install --upgrade pip && \
+    # pip config set global.timeout 120 && \
+    # pip config set global.retries 28 && \
+    # pip config set global.cache-dir /tmp/pip-cache && \
+    # wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
+    # bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/conda && \
+    # rm Miniconda3-latest-Linux-x86_64.sh
 
 # # Check Python version
 RUN python --version
