@@ -1,8 +1,13 @@
 FROM nvidia/cuda:12.2.0-base-ubuntu22.04
 
-# Switch to Tencent Cloud mirror and install necessary packages
 RUN apt-get update && \
-    apt-get install -y python3 python3-pip wget unzip build-essential lsb-release libopenblas-base libopenblas-dev libgfortran5 gfortran && \
+    apt-get install -y software-properties-common && \
+    add-apt-repository ppa:deadsnakes/ppa && \
+    apt-get update && \
+    apt-get install -y python3.8 python3.8-dev python3-pip && \
+    update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1
+
+RUN apt-get install -y wget unzip build-essential lsb-release libopenblas-base libopenblas-dev libgfortran5 gfortran && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     lsb_release -a
