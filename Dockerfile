@@ -1,41 +1,38 @@
 # Base image
 FROM nvidia/cuda:12.2.0-base-ubuntu22.04
 
-# Check Python version
-RUN python --version
-
 # Setting some environment variables to suppress warnings
 ENV DEBIAN_FRONTEND=noninteractive
 ENV PATH="/opt/conda/bin:${PATH}"
 
 # Install necessary Ubuntu packages, Python, pip, Anaconda and other tools
-# RUN apt-get update && apt-get install -y \
-#     software-properties-common \
-#     wget \
-#     unzip \
-#     build-essential \
-#     libopenblas-base \
-#     libopenblas-dev \
-#     libgfortran5 && \
-#     add-apt-repository ppa:deadsnakes/ppa && \
-#     apt-get update && apt-get install -y \
-#     python3.8 \
-#     python3.8-dev \
-#     python3.8-distutils \
-#     python3-pip && \
-#     update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1 && \
-#     apt-get clean && \
-#     rm -rf /var/lib/apt/lists/* && \
-#     python3 -m pip install --upgrade pip && \
-#     pip config set global.timeout 120 && \
-#     pip config set global.retries 28 && \
-#     pip config set global.cache-dir /tmp/pip-cache && \
-#     wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
-#     bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/conda && \
-#     rm Miniconda3-latest-Linux-x86_64.sh
+RUN apt-get update && apt-get install -y \
+    software-properties-common \
+    wget \
+    unzip \
+    build-essential \
+    libopenblas-base \
+    libopenblas-dev \
+    libgfortran5 && \
+    add-apt-repository ppa:deadsnakes/ppa && \
+    apt-get update && apt-get install -y \
+    python3.8 \
+    python3.8-dev \
+    python3.8-distutils \
+    python3-pip && \
+    update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1 && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/* && \
+    python3 -m pip install --upgrade pip && \
+    pip config set global.timeout 120 && \
+    pip config set global.retries 28 && \
+    pip config set global.cache-dir /tmp/pip-cache && \
+    wget https://mirrors.tuna.tsinghua.edu.cn/anaconda/miniconda/Miniconda3-latest-Linux-x86_64.sh && \
+    bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/conda && \
+    rm Miniconda3-latest-Linux-x86_64.sh
 
 # # Check Python version
-# RUN python --version
+RUN python --version
 
 # # Conda installation commands
 # RUN conda install -y pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia && \
