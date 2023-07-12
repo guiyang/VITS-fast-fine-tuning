@@ -35,26 +35,26 @@ RUN apt-get update && apt-get install -y \
 # # Check Python version
 RUN python --version
 
-# # Conda installation commands
-# RUN conda install -y pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia && \
-#     conda install -y numpy=1.21.6 scipy=1.5.2 tensorboard -c conda-forge
+# Conda installation commands
+RUN conda install -y pytorch torchvision torchaudio pytorch-cuda=11.7 -c pytorch -c nvidia && \
+    conda install -y numpy=1.21.6 scipy=1.5.2 tensorboard -c conda-forge
 
-# # Set working directory
-# WORKDIR /app
+# Set working directory
+WORKDIR /app
 
-# # Copy requirements.txt and install requirements
-# COPY ./requirements.txt .
-# RUN while read line; do pip install --no-cache-dir --progress-bar=on $line && echo "$line installed."; done < requirements.txt
+# Copy requirements.txt and install requirements
+COPY ./requirements.txt .
+RUN while read line; do pip install --no-cache-dir --progress-bar=on $line && echo "$line installed."; done < requirements.txt
 
-# # Copy app source to working directory
-# COPY ./ /app
+# Copy app source to working directory
+COPY ./ /app
 
-# # Run the setup and data download commands
-# RUN mkdir pretrained_models video_data raw_audio denoised_audio custom_character_voice segmented_character_voice && \
-#     cd monotonic_align && \
-#     mkdir monotonic_align && \
-#     python setup.py build_ext --inplace && \
-#     cd .. && \
-#     wget https://huggingface.co/datasets/Plachta/sampled_audio4ft/resolve/main/sampled_audio4ft_v2.zip && \
-#     unzip sampled_audio4ft_v2.zip && \
-#     wget https://huggingface.co/spaces/Plachta/VITS-Umamusume-voice-synthesizer/resolve/main/pretrained_models/D_trilingual.pth -O ./pretrained_models/D_0.pth
+# Run the setup and data download commands
+RUN mkdir pretrained_models video_data raw_audio denoised_audio custom_character_voice segmented_character_voice && \
+    cd monotonic_align && \
+    mkdir monotonic_align && \
+    python setup.py build_ext --inplace && \
+    cd .. && \
+    wget https://huggingface.co/datasets/Plachta/sampled_audio4ft/resolve/main/sampled_audio4ft_v2.zip && \
+    unzip sampled_audio4ft_v2.zip && \
+    wget https://huggingface.co/spaces/Plachta/VITS-Umamusume-voice-synthesizer/resolve/main/pretrained_models/D_trilingual.pth -O ./pretrained_models/D_0.pth
